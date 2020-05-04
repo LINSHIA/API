@@ -1,8 +1,4 @@
 <?php
-
-
-
-
 $covidDataJSONString = file_get_contents('https://api.covid19api.com/summary');
 
 $covidDataObject = json_decode($covidDataJSONString);
@@ -27,6 +23,7 @@ $covidData = $covidDataObject->Countries;
         <dd>Global : </dd>
         <dd>Total Confirmed : <?php echo $covidDataGlobal->TotalConfirmed; ?></dd>
         <dd>Total Deaths : <?php echo $covidDataGlobal->TotalDeaths; ?></dd>
+    <dd>NewRecovered :<?php echo $covidDataGlobal->NewRecovered; ?></dd>
     </dl>
 
     <?php foreach ($covidData as $i) { ?>
@@ -34,6 +31,8 @@ $covidData = $covidDataObject->Countries;
             <dd>Country: <?php echo $i->Country; ?></dd>
             <dd>Total Confirmed : <?php echo $i->TotalConfirmed; ?></dd>
             <dd>Total TotalDeaths : <?php echo $i->TotalTotalDeaths; ?></dd>
+        <dd>Date:<?php echo $i->Date; ?></dd>
+        
         </dl>
     <?php  } ?>
 </body>
